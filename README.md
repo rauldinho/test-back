@@ -59,7 +59,7 @@ This Flask application provides insights into your PagerDuty data through data s
 
 1.  **Main Page:** Visit [http://127.0.0.1:5001/](http://127.0.0.1:5001/) to see basic data and the incident breakdown chart.
 2.  **CSV Downloads:** Use the menu option in the dashboard to download the desired CSV report.
-3.  **API Endpoint:** Access `/service_with_most_incidents` to get JSON data about the service with the most incidents.
+3.  **API Endpoint:** Access `/data` to get JSON data about the service with the most incidents.
 
 ## Improvements
 
