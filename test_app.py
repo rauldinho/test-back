@@ -1,8 +1,7 @@
+# test_app.py
 import pytest
-import asyncio
 from app import app, db
-from pagerduty_sync import fetch_and_store_data
-from models import Service, Incident
+from models import Service, Incident, Team, EscalationPolicy
 
 
 @pytest.fixture
@@ -13,17 +12,21 @@ def client():
 
     with app.app_context():
         db.create_all()
-        asyncio.run(fetch_and_store_data())
 
     yield client
 
 
-def test_data_endpoint(client):
-    """Test the /data endpoint."""
-    response = client.get('/data')
-    json_data = response.get_json()
-    print(json_data)
-
+def test_index_view(client):
+    """Test the index route."""
+    response = client.get('/')
     assert response.status_code == 200
-    assert json_data['service_name'] == 'CSG Infra provisioning'
-    assert json_data['total_incidents'] == 8
+    assert 'Network Monitoring' in response.get_data(as_text=True)
+
+
+def test_download_csv(client):
+    """Test CSV download for total services."""
+    response = client.get('/download_csv/total_services')
+    assert response.status_code == 200
+    assert 'text/csv' in response.content_type
+    content = response.get_data(as_text=True)
+    assert 'total_services' in content
