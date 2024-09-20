@@ -1,0 +1,25 @@
+version: "3.8"
+services:
+    web:
+        build: .
+        ports:
+            - "5001:5001"
+        depends_on:
+            - db
+        environment:
+            - MYSQL_HOST=db
+            - MYSQL_USER=root
+            - MYSQL_PASSWORD=root
+            - MYSQL_DB=flaskapp
+    db:
+        image: mysql:5.7
+        ports:
+            - "3307:3306"
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: flaskapp
+        volumes:
+            - db-data:/var/lib/mysql
+
+volumes:
+    db-data:

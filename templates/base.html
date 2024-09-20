@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %}{% endblock title %}</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.css')}}">
+    <link rel="stylesheet" href="https://bootswatch.com/5/lumen/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+
+    <!-- JS -->
+    <script src="{{url_for('static', filename='js/bootstrap.js')}}"></script>
+    <script src="{{url_for('static', filename='js/chart.js')}}"></script>
+</head>
+
+<body>
+    <!-- NavBar -->
+    <nav class="navbar navbar-expand-lg bg-light" data-bs-theme="light">
+        <div class="container">
+            <a class="navbar-brand" href="/">Dashboard</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/"><i class="bi bi-house"></i> Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <i class="bi bi-filetype-csv"></i> Report CSV
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" target="_blank" href="/download_csv/total_services">Total
+                                    Services</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" target="_blank"
+                                    href="/download_csv/incidents_per_service">Total Incidents per
+                                    Service</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" target="_blank" href="/download_csv/total_incidents">Total
+                                    Incidents</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" target="_blank" href="/download_csv/total_teams">Total
+                                    Teams</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" target="_blank"
+                                    href="/download_csv/total_escalation_policies">Total Escalation
+                                    Policies</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" target="_blank" href="/data"><i class="bi bi-filetype-json"></i> Data
+                            Endpoint</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url_for('static', filename='docs/exercise.pdf')}}"
+                            target="_blank"><i class="bi bi-filetype-pdf"></i> Exercise
+                            PDF</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- ./NavBar -->
+
+    <!-- Content -->
+    <div class="container mt-4">
+        {% block content %}{% endblock content %}
+    </div>
+    <!-- ./Content -->
+
+</body>
+
+</html>
