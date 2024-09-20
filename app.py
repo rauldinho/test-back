@@ -10,8 +10,9 @@ from dotenv import load_dotenv
 
 # Load environment variables
 load_dotenv(dotenv_path=".env")
-print(f"Loaded SQLALCHEMY_DATABASE_URI: {
-      os.getenv('SQLALCHEMY_DATABASE_URI')}")
+print(
+    f"Loaded SQLALCHEMY_DATABASE_URI: {os.getenv('SQLALCHEMY_DATABASE_URI')}"
+)
 
 app = Flask(__name__)
 
