@@ -64,3 +64,7 @@ This Flask application provides insights into your PagerDuty data through data s
 ## Improvements
 
 -   Implement a caching feature for the responses, reducing time fetching and storing the data from the API and DB. This could be implemented using [Flask Caching](https://flask-caching.readthedocs.io/en/latest/)
+
+## Screenshot
+
+![Screenshot of Application](static/img/screenshot.jpeg)
