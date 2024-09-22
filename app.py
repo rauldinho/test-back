@@ -3,7 +3,7 @@ import os
 from flask import Flask
 from models import db
 from routes import init_routes
-from pagerduty_sync import fetch_and_store_data
+from pagerduty_sync import main
 from dotenv import load_dotenv
 
 # Load environment variables
@@ -30,7 +30,7 @@ def start_app():
 
         # Fetch and store data asynchronously from PagerDuty
         print("Fetching and Storing PagerDuty data started...")
-        asyncio.run(fetch_and_store_data())
+        asyncio.run(main())
 
 
 if __name__ == "__main__":
