@@ -1,8 +1,8 @@
-from models import db, Service, Team, Incident, EscalationPolicy
-from dotenv import load_dotenv
 import asyncio
 import aiohttp
 import os
+from models import db, Service, Team, Incident, EscalationPolicy
+from dotenv import load_dotenv
 
 # Load environment variables from .env file
 load_dotenv(dotenv_path=".env")
@@ -196,5 +196,3 @@ async def fetch_and_store_data():
         store_escalation_policies(result["escalation_policies"])
         store_services(result["services"])
         store_incidents(result["incidents"])
-
-    return result
